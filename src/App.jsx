@@ -892,6 +892,7 @@ export default function VerseQuiz() {
                 ← Back
               </button>
               <div style={{ display: "flex", gap: 3, background: "#eee8da", borderRadius: 7, padding: 3 }}>
+                {modePill("study", "Study")}
                 {modePill("review", "Review")}
                 {modePill("test", "Test")}
               </div>
@@ -1037,6 +1038,13 @@ export default function VerseQuiz() {
 
                   <div style={{ textAlign: "right", fontSize: 12, color: "#8a8270" }}>{current.reference}</div>
                 </>
+              ) : mode === "study" ? (
+                <>
+                  <div style={{ fontSize: 16, fontWeight: 700, color: ink, paddingRight: 50 }}>{current.title}</div>
+                  <div style={{ fontSize: 12, color: "#8a8270", marginTop: 2 }}>{current.reference}</div>
+                  <div style={{ margin: "12px 0 6px", fontSize: 15, lineHeight: 1.75, color: ink }}>{current.text}</div>
+                  <div style={{ textAlign: "right", fontSize: 12, color: "#8a8270" }}>{current.reference}</div>
+                </>
               ) : (
                 <>
                   <input
@@ -1141,7 +1149,7 @@ export default function VerseQuiz() {
                   </div>
                 </div>
               )
-            ) : (
+            ) : mode === "study" ? null : (
               <>
                 <div style={{ display: "flex", gap: 10, marginTop: 14 }}>
                   <button
