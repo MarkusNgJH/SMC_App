@@ -790,7 +790,7 @@ export default function VerseQuiz() {
 
   return (
     <div style={{ minHeight: "100vh", background: paper, fontFamily: "Georgia, 'Times New Roman', serif", color: ink }}>
-      <div style={{ maxWidth: 680, margin: "0 auto", padding: current ? "16px 14px 100px" : "32px 16px 48px", boxSizing: "border-box" }}
+      <div style={{ maxWidth: 680, margin: "0 auto", padding: current ? "16px 14px 170px" : "32px 16px 48px", boxSizing: "border-box" }}
         onTouchStart={current ? handleTouchStart : undefined}
         onTouchEnd={current ? handleTouchEnd : undefined}
       >
@@ -1212,6 +1212,49 @@ export default function VerseQuiz() {
                 )}
               </>
             )}
+
+            {/* ── Previous / Next buttons ── */}
+            <div style={{ display: "flex", gap: 10, maxWidth: 680, margin: "18px auto 0" }}>
+              <button
+                onClick={() => navigateCard(currentIndex - 1)}
+                disabled={currentIndex <= 0}
+                style={{
+                  flex: 1,
+                  padding: "13px 16px",
+                  fontFamily: "system-ui, sans-serif",
+                  fontSize: 15,
+                  fontWeight: 600,
+                  color: currentIndex <= 0 ? "#c5bca8" : ink,
+                  background: "#fff",
+                  border: "1.5px solid #ddd6c8",
+                  borderRadius: 8,
+                  cursor: currentIndex <= 0 ? "default" : "pointer",
+                  opacity: currentIndex <= 0 ? 0.5 : 1,
+                }}
+              >
+                ← Previous
+              </button>
+              <button
+                onClick={() => navigateCard(currentIndex + 1)}
+                disabled={currentIndex >= pack.verses.length - 1}
+                style={{
+                  flex: 1,
+                  padding: "13px 16px",
+                  fontFamily: "system-ui, sans-serif",
+                  fontSize: 15,
+                  fontWeight: 600,
+                  color: currentIndex >= pack.verses.length - 1 ? "#c5bca8" : ink,
+                  background: "#fff",
+                  border: "1.5px solid #ddd6c8",
+                  borderRadius: 8,
+                  cursor: currentIndex >= pack.verses.length - 1 ? "default" : "pointer",
+                  opacity: currentIndex >= pack.verses.length - 1 ? 0.5 : 1,
+                }}
+              >
+                Next →
+              </button>
+            </div>
+
             {/* ── Carousel ── */}
             <div style={{
               position: "fixed",
