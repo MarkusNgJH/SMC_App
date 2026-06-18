@@ -672,31 +672,20 @@ export default function VerseQuiz() {
   const [hints, setHints] = useState(0);
   const [flash, setFlash] = useState(null);
   const reviewInputRef = useRef(null);
-  const touchStartX = useRef(null);
-  const touchStartY = useRef(null);
+  const carouselRef = useRef(null);
 
   const currentIndex = current && pack ? pack.verses.findIndex((v) => v.id === current.id) : -1;
+
+  // Keep the active carousel pill scrolled into view
+  useEffect(() => {
+    if (currentIndex < 0) return;
+    const el = carouselRef.current?.querySelector('[data-active="true"]');
+    if (el) el.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  }, [currentIndex, pack]);
 
   const navigateCard = (idx) => {
     if (!pack || idx < 0 || idx >= pack.verses.length) return;
     startQuiz(pack.verses[idx]);
-  };
-
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX;
-    touchStartY.current = e.touches[0].clientY;
-  };
-
-  const handleTouchEnd = (e) => {
-    if (touchStartX.current === null) return;
-    const dx = e.changedTouches[0].clientX - touchStartX.current;
-    const dy = e.changedTouches[0].clientY - touchStartY.current;
-    touchStartX.current = null;
-    touchStartY.current = null;
-    // Only trigger if horizontal swipe dominates (avoid scroll interference)
-    if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
-    if (dx < 0) navigateCard(currentIndex + 1); // swipe left → next
-    else navigateCard(currentIndex - 1);         // swipe right → prev
   };
 
   const titleWords = current ? current.title.split(/\s+/).filter((w) => firstLetter(w) !== null) : [];
@@ -790,10 +779,8 @@ export default function VerseQuiz() {
 
   return (
     <div style={{ minHeight: "100vh", background: paper, fontFamily: "Georgia, 'Times New Roman', serif", color: ink }}>
-      <div style={{ maxWidth: 680, margin: "0 auto", padding: current ? "16px 14px 170px" : "32px 16px 48px", boxSizing: "border-box" }}
-        onTouchStart={current ? handleTouchStart : undefined}
-        onTouchEnd={current ? handleTouchEnd : undefined}
-      >
+      <div style={{ maxWidth: 680, margin: "0 auto", padding: current ? "16px 14px 170px" : "32px 16px 48px", boxSizing: "border-box" }}>
+
         {!current && (
           <header style={{ textAlign: "center", marginBottom: 28 }}>
             <div style={{ fontSize: 12, letterSpacing: 4, textTransform: "uppercase", color: gold, fontFamily: "system-ui, sans-serif", fontWeight: 600 }}>
@@ -1274,38 +1261,53 @@ export default function VerseQuiz() {
               padding: "10px 14px 14px",
               zIndex: 100,
             }}>
-              <div style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 6,
-                maxWidth: 680,
-                margin: "0 auto",
-                overflowX: "auto",
-                WebkitOverflowScrolling: "touch",
-                scrollbarWidth: "none",
-                paddingBottom: 2,
-              }}>
+              <div
+                ref={carouselRef}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  maxWidth: 680,
+                  margin: "0 auto",
+                  overflowX: "auto",
+                  WebkitOverflowScrolling: "touch",
+                  scrollbarWidth: "none",
+                  padding: "2px 4px 4px",
+                }}
+              >
                 {pack.verses.map((v, i) => {
                   const isActive = i === currentIndex;
                   const isMastered = mastered[v.id];
                   return (
                     <button
                       key={v.id}
+                      data-active={isActive}
                       onClick={() => navigateCard(i)}
                       title={v.reference}
                       style={{
                         flexShrink: 0,
-                        width: isActive ? 28 : 10,
-                        height: 10,
-                        borderRadius: 5,
-                        border: "none",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 5,
+                        minHeight: 38,
+                        padding: "8px 13px",
+                        borderRadius: 10,
+                        border: isActive ? `2px solid ${ink}` : "2px solid transparent",
                         cursor: "pointer",
-                        padding: 0,
-                        transition: "width 0.2s ease, background 0.2s ease",
-                        background: isActive ? ink : isMastered ? sage : "#ccc5b3",
+                        fontFamily: "system-ui, sans-serif",
+                        fontSize: 13,
+                        fontWeight: isActive ? 700 : 500,
+                        whiteSpace: "nowrap",
+                        transition: "background 0.15s ease, color 0.15s ease, border-color 0.15s ease",
+                        background: isActive ? ink : isMastered ? sage : "#ece6d8",
+                        color: isActive ? paper : isMastered ? "#fff" : "#6f6857",
                       }}
-                    />
+                    >
+                      {isMastered && (
+                        <span style={{ fontSize: 12, lineHeight: 1, opacity: isActive ? 1 : 0.95 }}>✓</span>
+                      )}
+                      <span>{v.reference}</span>
+                    </button>
                   );
                 })}
               </div>
