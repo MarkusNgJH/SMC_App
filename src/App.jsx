@@ -673,6 +673,7 @@ export default function VerseQuiz() {
   const [flash, setFlash] = useState(null);
   const reviewInputRef = useRef(null);
   const carouselRef = useRef(null);
+  const [kbOffset, setKbOffset] = useState(0);
 
   const currentIndex = current && pack ? pack.verses.findIndex((v) => v.id === current.id) : -1;
 
@@ -682,6 +683,25 @@ export default function VerseQuiz() {
     const el = carouselRef.current?.querySelector('[data-active="true"]');
     if (el) el.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
   }, [currentIndex, pack]);
+
+  // Lift the fixed carousel above the on-screen keyboard.
+  // On mobile the keyboard overlays a `position:fixed; bottom:0` bar instead of
+  // resizing the layout viewport, so we measure the visual viewport and offset.
+  useEffect(() => {
+    const vv = window.visualViewport;
+    if (!vv) return;
+    const update = () => {
+      const overlap = window.innerHeight - vv.height - vv.offsetTop;
+      setKbOffset(overlap > 80 ? overlap : 0); // ignore tiny URL-bar jitter
+    };
+    update();
+    vv.addEventListener("resize", update);
+    vv.addEventListener("scroll", update);
+    return () => {
+      vv.removeEventListener("resize", update);
+      vv.removeEventListener("scroll", update);
+    };
+  }, []);
 
   const navigateCard = (idx) => {
     if (!pack || idx < 0 || idx >= pack.verses.length) return;
@@ -1253,13 +1273,14 @@ export default function VerseQuiz() {
             {/* ── Carousel ── */}
             <div style={{
               position: "fixed",
-              bottom: 0,
+              bottom: kbOffset,
               left: 0,
               right: 0,
               background: paper,
               borderTop: "1px solid #e3ddd0",
               padding: "10px 14px 14px",
               zIndex: 100,
+              transition: "bottom 0.2s ease",
             }}>
               <div
                 ref={carouselRef}
