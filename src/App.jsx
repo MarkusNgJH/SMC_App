@@ -859,33 +859,66 @@ export default function VerseQuiz() {
             {backLink("All packs", () => setPack(null))}
             <h2 style={{ fontSize: 22, fontWeight: 500, margin: "0 0 16px" }}>{pack.name}</h2>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {pack.verses.map((v) => (
-                <button
-                  key={v.id}
-                  onClick={() => startQuiz(v)}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    gap: 10,
-                    padding: "15px 20px",
-                    background: "#fff",
-                    border: `1px solid ${mastered[v.id] ? sage : "#e3ddd0"}`,
-                    borderLeft: `4px solid ${mastered[v.id] ? sage : gold}`,
-                    borderRadius: 8,
-                    cursor: "pointer",
-                    fontFamily: "inherit",
-                    fontSize: 17,
-                    color: ink,
-                    textAlign: "left",
-                  }}
-                >
-                  <span>{v.reference}</span>
-                  <span style={{ fontSize: 13, fontFamily: "system-ui, sans-serif", color: mastered[v.id] ? sage : "#b6ad9b", whiteSpace: "nowrap" }}>
-                    {mastered[v.id] ? "✓ Mastered" : "Practice"}
-                  </span>
-                </button>
-              ))}
+              {pack.verses.map((v) => {
+                const isM = mastered[v.id];
+                return (
+                  <button
+                    key={v.id}
+                    onClick={() => startQuiz(v)}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 4,
+                      padding: "14px 16px",
+                      background: "#fff",
+                      border: `1px solid ${isM ? sage : "#ddd6c8"}`,
+                      borderLeft: `4px solid ${isM ? sage : gold}`,
+                      borderRadius: 8,
+                      boxShadow: "0 1px 4px rgba(34,48,74,0.08)",
+                      cursor: "pointer",
+                      fontFamily: "system-ui, sans-serif",
+                      color: ink,
+                      textAlign: "left",
+                      width: "100%",
+                      boxSizing: "border-box",
+                    }}
+                  >
+                    <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 10 }}>
+                      <span style={{
+                        fontSize: 15,
+                        fontWeight: 700,
+                        lineHeight: 1.3,
+                        flex: 1,
+                        minWidth: 0,
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}>
+                        {v.title}
+                      </span>
+                      <span style={{ fontSize: 11, color: isM ? sage : "#b6ad9b", whiteSpace: "nowrap", flexShrink: 0 }}>
+                        {isM ? "✓ Mastered" : "Practice"}
+                      </span>
+                    </div>
+                    <div style={{ fontSize: 12, color: "#8a8270" }}>
+                      {v.reference}
+                    </div>
+                    <div style={{
+                      marginTop: 6,
+                      fontSize: 13,
+                      lineHeight: 1.55,
+                      color: ink,
+                      minHeight: 60,
+                      display: "-webkit-box",
+                      WebkitLineClamp: 3,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                    }}>
+                      {v.text}
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </div>
         ) : (
