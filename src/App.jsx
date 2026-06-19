@@ -794,7 +794,7 @@ export default function VerseQuiz() {
   };
 
   const allCorrect = result && result.titleOk && result.diff.perfect;
-  const masteredInPack = (p) => p.verses.filter((v) => mastered[v.id]).length;
+  const perfectInPack = (p) => p.verses.filter((v) => bestMisses[v.id] === 0).length;
 
   const modePill = (value, label) => (
     <button
@@ -874,7 +874,7 @@ export default function VerseQuiz() {
                     </div>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
                       {packs.map((p) => {
-                        const done = masteredInPack(p);
+                        const done = perfectInPack(p);
                         const complete = done === p.verses.length;
                         return (
                           <button
