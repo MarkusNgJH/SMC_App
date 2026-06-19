@@ -105,7 +105,7 @@ const PACKS = [
   },
   {
     id: "DEP1",
-    name: "DEP 242 Pack 1 - Assurance of Salvation",
+    name: "Pack 1 - Assurance of Salvation",
     verses: [
       { id: "DEP1-1", title: "Can be assured", reference: "2 Corinthians 13:5", text: "Examine yourselves to see whether you are in the faith; test yourselves. Do you not realize that Christ Jesus is in you\u2014unless, of course, you fail the test?" },
       { id: "DEP1-2", title: "Can be assured", reference: "1 John 5:11-12", text: "And this is the testimony: God has given us eternal life, and this life is in his Son. He who has the Son has life; he who does not have the Son of God does not have life." },
@@ -130,7 +130,7 @@ const PACKS = [
 
   {
     id: "DEP2",
-    name: "DEP 242 Pack 2 - Quiet Time",
+    name: "Pack 2 - Quiet Time",
     verses: [
       { id: "DEP2-1", title: "God wants to fellowship with us", reference: "1 Corinthians 1:9", text: "God, who has called you into fellowship with his Son Jesus Christ our Lord, is faithful." },
       { id: "DEP2-2", title: "God wants to fellowship with us", reference: "Isaiah 30:18", text: "Yet the LORD longs to be gracious to you; he rises to show you compassion. For the LORD is a God of justice. Blessed are all who wait for him!" },
@@ -162,7 +162,7 @@ const PACKS = [
   },
   {
     id: "DEP3",
-    name: "DEP 242 Pack 3 - The Word",
+    name: "Pack 3 - The Word",
     verses: [
       { id: "DEP3-1", title: "Inspired by God", reference: "2 Timothy 3:16", text: "All Scripture is God-breathed and is useful for teaching, rebuking, correcting and training in righteousness," },
       { id: "DEP3-2", title: "Inspired by God", reference: "2 Peter 1:21", text: "For prophecy never had its origin in the will of man, but men spoke from God as they were carried along by the Holy Spirit." },
@@ -205,7 +205,7 @@ const PACKS = [
   },
   {
     id: "DEP4",
-    name: "DEP 242 Pack 4 - Prayer",
+    name: "Pack 4 - Prayer",
     verses: [
       { id: "DEP4-1", title: "Cease not to pray", reference: "1 Thessalonians 5:17", text: "pray continually;" },
       { id: "DEP4-2", title: "Devote yourself to prayer", reference: "Colossians 4:2", text: "Devote yourselves to prayer, being watchful and thankful." },
@@ -243,7 +243,7 @@ const PACKS = [
   },
   {
     id: "DEP5",
-    name: "DEP 242 Pack 5 - Fellowship",
+    name: "Pack 5 - Fellowship",
     verses: [
       { id: "DEP5-1", title: "The Blood of Christ", reference: "Ephesians 2:13", text: "But now in Christ Jesus you who once were far away have been brought near through the blood of Christ." },
       { id: "DEP5-2", title: "The Blood of Christ", reference: "Colossians 1:20", text: "and through him to reconcile to himself all things, whether things on earth or things in heaven, by making peace through his blood, shed on the cross." },
@@ -279,7 +279,7 @@ const PACKS = [
   },
   {
     id: "DEP6",
-    name: "DEP 242 Pack 6 - Witnessing",
+    name: "Pack 6 - Witnessing",
     verses: [
       { id: "DEP6-1", title: "Every Christian", reference: "Acts 1:8", text: "But you will receive power when the Holy Spirit comes on you; and you will be my witnesses in Jerusalem, and in all Judea and Samaria, and to the ends of the earth.\"" },
       { id: "DEP6-2", title: "Every Christian", reference: "2 Corinthians 5:18-19", text: "All this is from God, who reconciled us to himself through Christ and gave us the ministry of reconciliation: that God was reconciling the world to himself in Christ, not counting men's sins against them. And he has committed to us the message of reconciliation." },
@@ -340,7 +340,7 @@ const PACKS = [
   },
   {
     id: "DEP7",
-    name: "DEP 242 Pack 7 - The Lordship of Christ",
+    name: "Pack 7 - The Lordship of Christ",
     verses: [
       { id: "DEP7-1", title: "The Creator", reference: "John 1:2-3", text: "He was with God in the beginning. Through him all things were made; without him nothing was made that has been made." },
       { id: "DEP7-2", title: "The Lord of all creation", reference: "Colossians 1:16-17", text: "For by him all things were created: things in heaven and on earth, visible and invisible, whether thrones or powers or rulers or authorities; all things were created by him and for him. He is before all things, and in him all things hold together." },
@@ -372,7 +372,7 @@ const PACKS = [
   },
   {
     id: "DEP8",
-    name: "DEP 242 Pack 8 - World Vision",
+    name: "Pack 8 - World Vision",
     verses: [
       { id: "DEP8-1", title: "God's concern and promise for the world", reference: "Genesis 12:2-3", text: "\"I will make you into a great nation and I will bless you; I will make your name great, and you will be a blessing. I will bless those who bless you, and whoever curses you I will curse; and all peoples on earth will be blessed through you.\"" },
       { id: "DEP8-2", title: "God's concern and promise for the world", reference: "Isaiah 49:6", text: "he says: \"It is too small a thing for you to be my servant to restore the tribes of Jacob and bring back those of Israel I have kept. I will also make you a light for the Gentiles, that you may bring my salvation to the ends of the earth.\"" },
@@ -396,7 +396,7 @@ const PACKS = [
   },
   {
     id: "S1",
-    name: "180 Series 1 - Getting to Know God",
+    name: "Series 1 - Getting to Know God",
     verses: [
       { id: "S1-1", title: "Jesus' Deity", reference: "John 1:1,14", text: "In the beginning was the Word, and the Word was with God, and the Word was God. The Word became flesh and made his dwelling among us. We have seen his glory, the glory of the One and Only, who came from the Father, full of grace and truth." },
       { id: "S1-2", title: "Jesus' Deity", reference: "Hebrews 1:8", text: "But about the Son he says, \"Your throne, O God, will last for ever and ever, and righteousness will be the scepter of your kingdom." },
@@ -438,7 +438,7 @@ const PACKS = [
   },
   {
     id: "S2",
-    name: "180 Series 2 - Growing in Love",
+    name: "Series 2 - Growing in Love",
     verses: [
       { id: "S2-1", title: "Tell the Truth", reference: "Ephesians 4:15", text: "Instead, speaking the truth in love, we will in all things grow up into him who is the Head, that is, Christ." },
       { id: "S2-2", title: "Tell the Truth", reference: "Colossians 3:9", text: "Do not lie to each other, since you have taken off your old self with its practices" },
@@ -480,7 +480,7 @@ const PACKS = [
   },
   {
     id: "S3",
-    name: "180 Series 3 - Growing in Faith",
+    name: "Series 3 - Growing in Faith",
     verses: [
       { id: "S3-1", title: "Importance of Promises", reference: "2 Peter 1:3-4", text: "His divine power has given us everything we need for life and godliness through our knowledge of him who called us by his own glory and goodness. Through these he has given us his very great and precious promises, so that through them you may participate in the divine nature and escape the corruption in the world caused by evil desires." },
       { id: "S3-2", title: "Importance of Promises", reference: "2 Corinthians 1:20", text: "For no matter how many promises God has made, they are \"Yes\" in Christ. And so through him the \"Amen\" is spoken by us to the glory of God." },
@@ -522,7 +522,7 @@ const PACKS = [
   },
   {
     id: "S4",
-    name: "180 Series 4 - Walking in Victory",
+    name: "Series 4 - Walking in Victory",
     verses: [
       { id: "S4-1", title: "Victory in Christ", reference: "1 Corinthians 15:57", text: "But thanks be to God! He gives us the victory through our Lord Jesus Christ." },
       { id: "S4-2", title: "Victory in Christ", reference: "2 Corinthians 2:14", text: "But thanks be to God, who always leads us in triumphal procession in Christ and through us spreads everywhere the fragrance of the knowledge of him." },
@@ -564,7 +564,7 @@ const PACKS = [
   },
   {
     id: "S5",
-    name: "180 Series 5 - Sharing Christ with Others",
+    name: "Series 5 - Sharing Christ with Others",
     verses: [
       { id: "S5-1", title: "Reaching All Men", reference: "Colossians 1:27-28", text: "To them God has chosen to make known among the Gentiles the glorious riches of this mystery, which is Christ in you, the hope of glory. We proclaim him, admonishing and teaching everyone with all wisdom, so that we may present everyone perfect in Christ." },
       { id: "S5-2", title: "Representing God", reference: "2 Corinthians 5:19-20", text: "that God was reconciling the world to himself in Christ, not counting men's sins against them. And he has committed to us the message of reconciliation. We are therefore Christ's ambassadors, as though God were making his appeal through us. We implore you on Christ's behalf: Be reconciled to God." },
@@ -819,39 +819,67 @@ export default function VerseQuiz() {
             <p style={{ textAlign: "center", fontSize: 15, opacity: 0.75, marginBottom: 24 }}>
               Choose a pack to practice.
             </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              {PACKS.map((p) => {
-                const done = masteredInPack(p);
-                const complete = done === p.verses.length;
+            {(() => {
+              const sections = [
+                { title: "Topical Memory System", tag: "60", match: (p) => ["5A", "A", "B", "C", "D", "E"].includes(p.id) },
+                { title: "Discipleship Eight Packages", tag: "242", match: (p) => p.id.startsWith("DEP") },
+                { title: "Topical Memory System", tag: "180", match: (p) => /^S\d/.test(p.id) },
+              ];
+              return sections.map((sec, si) => {
+                const packs = PACKS.filter(sec.match);
                 return (
-                  <button
-                    key={p.id}
-                    onClick={() => setPack(p)}
-                    style={{
+                  <div key={si} style={{ marginBottom: si < sections.length - 1 ? 30 : 0 }}>
+                    <div style={{
                       display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      gap: 10,
-                      padding: "18px 22px",
-                      background: "#fff",
-                      border: `1px solid ${complete ? sage : "#e3ddd0"}`,
-                      borderLeft: `4px solid ${complete ? sage : gold}`,
-                      borderRadius: 8,
-                      cursor: "pointer",
-                      fontFamily: "inherit",
-                      fontSize: 17,
-                      color: ink,
-                      textAlign: "left",
-                    }}
-                  >
-                    <span>{p.name}</span>
-                    <span style={{ fontSize: 13, fontFamily: "system-ui, sans-serif", color: complete ? sage : "#b6ad9b", whiteSpace: "nowrap" }}>
-                      {done}/{p.verses.length}
-                    </span>
-                  </button>
+                      alignItems: "baseline",
+                      gap: 8,
+                      margin: "0 2px 14px",
+                      paddingBottom: 8,
+                      borderBottom: "1px solid #e3ddd0",
+                    }}>
+                      <h2 style={{ fontSize: 20, fontWeight: 600, margin: 0, color: ink }}>{sec.title}</h2>
+                      <span style={{ fontSize: 14, fontFamily: "system-ui, sans-serif", color: gold, fontWeight: 700 }}>({sec.tag})</span>
+                    </div>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+                      {packs.map((p) => {
+                        const done = masteredInPack(p);
+                        const complete = done === p.verses.length;
+                        return (
+                          <button
+                            key={p.id}
+                            onClick={() => setPack(p)}
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              justifyContent: "space-between",
+                              gap: 8,
+                              padding: "13px 14px",
+                              background: "#fff",
+                              border: `1px solid ${complete ? sage : "#e3ddd0"}`,
+                              borderLeft: `4px solid ${complete ? sage : gold}`,
+                              borderRadius: 8,
+                              cursor: "pointer",
+                              fontFamily: "inherit",
+                              fontSize: 14,
+                              lineHeight: 1.3,
+                              color: ink,
+                              textAlign: "left",
+                              minHeight: 76,
+                              boxSizing: "border-box",
+                            }}
+                          >
+                            <span>{p.name}</span>
+                            <span style={{ fontSize: 12, fontFamily: "system-ui, sans-serif", color: complete ? sage : "#b6ad9b", whiteSpace: "nowrap" }}>
+                              {done}/{p.verses.length}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
                 );
-              })}
-            </div>
+              });
+            })()}
           </div>
         ) : !current ? (
           /* ── Verse list ── */
