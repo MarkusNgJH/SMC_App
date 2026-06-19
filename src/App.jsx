@@ -839,9 +839,6 @@ export default function VerseQuiz() {
               TMS · DEP 242 · 180 Series · NIV 1984
             </div>
             <h1 style={{ fontSize: 32, margin: "8px 0 4px", fontWeight: 500 }}>Hide It in Your Heart</h1>
-            <div style={{ fontSize: 14, opacity: 0.65 }}>
-              {Object.keys(mastered).length} of {TOTAL_VERSES} verses mastered
-            </div>
           </header>
         )}
 
@@ -853,7 +850,7 @@ export default function VerseQuiz() {
             </p>
             {(() => {
               const sections = [
-                { title: "Topical Memory System", tag: "60", match: (p) => ["5A", "A", "B", "C", "D", "E"].includes(p.id) },
+                { title: "Topical Memory System", tag: "65", match: (p) => ["5A", "A", "B", "C", "D", "E"].includes(p.id) },
                 { title: "Discipleship Eight Packages", tag: "242", match: (p) => p.id.startsWith("DEP") },
                 { title: "Topical Memory System", tag: "180", match: (p) => /^S\d/.test(p.id) },
               ];
