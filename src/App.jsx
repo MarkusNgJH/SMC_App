@@ -659,6 +659,26 @@ export default function VerseQuiz() {
   const [current, setCurrent] = useState(null);
   const [mode, setMode] = useState("review");
   const [mastered, setMastered] = useState({});
+  const [bestMisses, setBestMisses] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("hiyh_best_misses") || "{}");
+    } catch {
+      return {};
+    }
+  });
+
+  // Persist the lowest-misses record across sessions
+  useEffect(() => {
+    try {
+      localStorage.setItem("hiyh_best_misses", JSON.stringify(bestMisses));
+    } catch {
+      /* storage unavailable — keep in memory only */
+    }
+  }, [bestMisses]);
+
+  const recordMisses = (id, n) => {
+    setBestMisses((b) => (b[id] === undefined || n < b[id] ? { ...b, [id]: n } : b));
+  };
 
   // Test mode state
   const [titleInput, setTitleInput] = useState("");
@@ -673,6 +693,7 @@ export default function VerseQuiz() {
   const [flash, setFlash] = useState(null);
   const reviewInputRef = useRef(null);
   const carouselRef = useRef(null);
+  const reviewRecordedRef = useRef(false);
   const [kbOffset, setKbOffset] = useState(0);
 
   const currentIndex = current && pack ? pack.verses.findIndex((v) => v.id === current.id) : -1;
@@ -722,6 +743,15 @@ export default function VerseQuiz() {
     }
   }, [mode, current, revealedCount, reviewDone]);
 
+  // Record the review's miss count once, when the verse is completed
+  useEffect(() => {
+    if (mode === "review" && current && reviewDone && words.length > 0 && !reviewRecordedRef.current) {
+      reviewRecordedRef.current = true;
+      recordMisses(current.id, mistakes);
+    }
+    if (!reviewDone) reviewRecordedRef.current = false;
+  }, [reviewDone, mode, current, mistakes, words.length]);
+
   const startQuiz = (v) => {
     setCurrent(v);
     setTitleInput("");
@@ -742,6 +772,8 @@ export default function VerseQuiz() {
     const titleOk = normalize(titleInput) === normalize(current.title);
     const diff = diffWords(current.text, verseInput);
     setResult({ titleOk, diff });
+    const misses = (titleOk ? 0 : 1) + diff.cells.filter((c) => c.status !== "ok").length;
+    recordMisses(current.id, misses);
     if (titleOk && diff.perfect) {
       setMastered((m) => ({ ...m, [current.id]: true }));
     }
@@ -888,7 +920,10 @@ export default function VerseQuiz() {
             <h2 style={{ fontSize: 22, fontWeight: 500, margin: "0 0 16px" }}>{pack.name}</h2>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {pack.verses.map((v) => {
-                const isM = mastered[v.id];
+                const best = bestMisses[v.id];
+                const hasBest = best !== undefined;
+                const isPerfect = best === 0;
+                const isM = mastered[v.id] || isPerfect;
                 return (
                   <button
                     key={v.id}
@@ -924,8 +959,21 @@ export default function VerseQuiz() {
                       }}>
                         {v.title}
                       </span>
-                      <span style={{ fontSize: 11, color: isM ? sage : "#b6ad9b", whiteSpace: "nowrap", flexShrink: 0 }}>
-                        {isM ? "✓ Mastered" : "Practice"}
+                      <span
+                        title={hasBest ? `Fewest misses: ${best}` : "Not attempted yet"}
+                        style={{
+                          fontSize: 11,
+                          fontWeight: 700,
+                          whiteSpace: "nowrap",
+                          flexShrink: 0,
+                          padding: "2px 9px",
+                          borderRadius: 999,
+                          background: isPerfect ? sage : hasBest ? "#efe9db" : "transparent",
+                          color: isPerfect ? "#fff" : hasBest ? "#8a8270" : "#c5bca8",
+                          border: hasBest ? "none" : "1px dashed #d8d0bf",
+                        }}
+                      >
+                        {hasBest ? (isPerfect ? "✓ 0" : best) : "New"}
                       </span>
                     </div>
                     <div style={{ fontSize: 12, color: "#8a8270" }}>
